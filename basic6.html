@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+
+    var person = {name: "oli", age: "22", job: "trainee"};
+
+    function incrementAge() {
+        person.age++;
+        window.document.frm.t.value = person.age;
+    }
+
+</script>
+
+<form name="frm">
+
+    <input type=button value="click" onclick="incrementAge()">
+    <input type=text name="t">
+
+</form>
+
+</html>

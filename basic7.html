@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+
+    function make(name, age, job) {
+        person = {};
+        person.name = name;
+        person.age = age;
+        person.job = job;
+        return person;
+    }
+
+    function update() {
+        var nameT = window.document.frm.nameText
+        var ageT = window.document.frm.ageText
+        var jobT = window.document.frm.jobText
+
+        if (nameT.value == "") {
+            name.focus();
+        } else if (ageT.value == "") {
+            age.focus();
+        } else if (jobT.value == "") {
+            job.focus();
+        } else {
+            person = make(nameT.value, ageT.value, jobT.value);
+        }
+
+    }
+
+    function get() {
+        window.document.frm.nameText.value = person.name;
+        window.document.frm.ageText.value = person.age;
+        window.document.frm.jobText.value = person.job;
+    }
+
+</script>
+<form name="frm">
+    Name: <input name="nameText"><br>
+    Age: <input name="ageText"><br>
+    Job: <input name="jobText"><br>
+
+    <input type=button name="getButton" value="get" onclick="get()">
+    <input type=button name="updateButton" value="update" onclick="update()">
+</form>
+</html>
