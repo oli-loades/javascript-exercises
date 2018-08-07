@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+
+    document.write("check console");
+
+    var strings = ["abc", "def", "ghi"];
+
+    function display() {
+        for (var i = 0; i < strings.length; i++) {
+            console.log(strings[i]);
+        }
+    }
+
+    display();
+    strings.push("jkl");
+    display();
+    strings.splice(strings.length - 1, 1);
+    display();
+
+</script>
+</html>
