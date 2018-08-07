@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    function sendRequest() {
+        var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json";
+        var request = new XMLHttpRequest();
+        request.open("GET", requestURL);
+        request.responseType = "json";
+        request.send();
+        request.onload = function () {
+            var requestData = request.response;
+            printInfo(requestData);
+
+        }
+
+    }
+
+    function printInfo(data){
+        var squad = document.createElement("h1");
+        squad.textContent = "Name: " + data['squadName'];
+        document.getElementById("frm").appendChild(squad);
+
+        var home = document.createElement("h2");
+        home.textContent = "Hometown: " + data['homeTown'];
+        document.getElementById("frm").appendChild(home);
+
+        var formed = document.createElement("h3");
+        formed.textContent = "Formed: " + data['formed'];
+        document.getElementById("frm").appendChild(formed);
+
+        var base = document.createElement("h3");
+        base.textContent = "Base: " + data['secretBase'];
+        document.getElementById("frm").appendChild(base);
+
+        var active = document.createElement("h4");
+        active.textContent = "Active: " + data['active'];
+        document.getElementById("frm").appendChild(active);
+
+        printMembers(data['members']);
+    }
+
+    function printMembers(memberData){
+        var table = document.createElement("table");
+
+        var header = table.insertRow(0);
+        var nameCol = header.insertCell(0);
+        nameCol.innerHTML = "name";
+        var ageCol = header.insertCell(1);
+        ageCol.innerHTML = "age";
+        var idCol = header.insertCell(2);
+        idCol.innerHTML = "secret id";
+
+        for(var i = 0;i<memberData.length;i++){
+            var row = table.insertRow(i+1);
+            var col1 =  row.insertCell(0);
+            col1.innerHTML = memberData[i]['name'];
+            var col2 =  row.insertCell(1);
+            col2.innerHTML = memberData[i]['age'];
+            var col3 =  row.insertCell(2);
+            col3.innerHTML = memberData[i]['secretIdentity'];
+        }
+
+        document.getElementById("frm").appendChild(table);
+    }
+</script>
+<form id = "frm">
+<input type = button value = "send" onclick = "sendRequest()"><br>
+</form>
+</html>

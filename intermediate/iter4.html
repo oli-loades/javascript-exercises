@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    function iter(num) {
+
+        var count = 0;
+
+        while (num > 1) {
+            count++;
+            var result = num % 3;
+
+            if (result == 0) {
+                num = num / 3;
+                console.log("div 3 = " + num);
+            } else if (result == 1) {
+                num--;
+                console.log("subtract 1 = " + num);
+            } else {
+                num++;
+                console.log("add 1 = " + num);
+            }
+
+        }
+
+        document.write("numcount = " + count);
+
+    }
+
+    iter(49);
+</script>
+</html>

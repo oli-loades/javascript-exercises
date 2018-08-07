@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    function sendRequest() {
+        var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json ";
+        var request = new XMLHttpRequest();
+        request.open("GET", requestURL);
+        request.responseType = "json";
+        request.send();
+        request.onload = function () {
+            var requestData = request.response;
+            find(requestData);
+        }
+    }
+
+    function find(data) {
+        var term = document.getElementById("t1").value;
+        for (var i = 0; i < data.length; i++) {
+            if (data[i]['hse'].includes(term)) {
+                printInfo(data[i]);
+            }
+        }
+    }
+
+    function printInfo(person) {
+        var name = document.createElement("h1");
+        name.textContent = person['nm'];
+        document.getElementById("frm").appendChild(name);
+
+        var house = document.createElement("h2");
+        house.textContent = person['hse'];
+        document.getElementById("frm").appendChild(house);
+
+
+        var city = document.createElement("h2");
+        city.textContent = person['cty'];
+        document.getElementById("frm").appendChild(city);
+
+
+        var years = document.createElement("h3");
+        years.textContent = person['yrs'];
+        document.getElementById("frm").appendChild(years);
+    }
+
+</script>
+<form id="frm">
+    <input id="t1">
+    <input type="button" id="b1" value="search" onclick="sendRequest()">
+</form>
+
+</html>

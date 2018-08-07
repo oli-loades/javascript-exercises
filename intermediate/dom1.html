@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<Script>
+
+    var count = 0;
+
+    function add() {
+        var para = document.createElement("p");
+        var text = document.createTextNode(document.getElementById("t1").value);
+
+        count++;
+        para.setAttribute("id", "p" + count);
+
+        para.appendChild(text);
+
+        var ele = document.getElementById("frm");
+
+        ele.appendChild(para);
+    }
+
+    function deletePara() {
+        var toDel = document.getElementById("p" + count);
+        var ele = document.getElementById("frm");
+
+        ele.removeChild(toDel);
+
+        count--;
+    }
+
+</Script>
+<form id="frm">
+    <input id=t1><br>
+    <input id="b1" type=button value="add" onclick="add()">
+    <input id="b2" type=button value="delete" onclick="deletePara()">
+</form>
+</html>
